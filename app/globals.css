@@ -1,1 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+@layer base {
+  body { @apply bg-paper font-body text-ink antialiased; }
+  h1, h2, h3 { @apply font-display tracking-tight; }
+  :focus-visible { @apply outline outline-2 outline-offset-2 outline-brand; }
+}
+@layer components {
+  .card { @apply rounded-xl border-2 border-ink bg-white shadow-hard; }
+  .btn { @apply inline-flex items-center justify-center rounded-lg border-2 border-ink px-5 py-3 font-semibold shadow-hard-sm transition active:translate-x-[3px] active:translate-y-[3px] active:shadow-none disabled:opacity-50; }
+  .btn-primary { @apply btn bg-brand text-white; }
+  .btn-light { @apply btn bg-white; }
+  .field { @apply w-full rounded-lg border-2 border-ink bg-white px-4 py-3 outline-none focus:border-brand; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes pop { from { transform: translateY(14px) rotate(2deg); opacity: 0 } to { transform: none; opacity: 1 } }
+  .hero-card { animation: pop .7s cubic-bezier(.2,.8,.2,1) both; }
+}
